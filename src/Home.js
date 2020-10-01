@@ -15,8 +15,8 @@ function Home() {
         <div className="home__row">
           <Product
             id="1234453"
-            title="The Lean Startup"
-            price={29.99}
+            title="The Lean Startup: How Constant Innovation Creates Radically Successful businesses Paperback"
+            price={11.96}
             image="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"
             rating={5}
           />
@@ -41,7 +41,7 @@ function Home() {
             id="34785"
             title="Amazon Echo (3rd generation) | Smart speaker with Alexa, Charcoal Fabric"
             price={98.99}
-            image="https://media.very.co.uk/i/very/P6LTG_SQ1_0000000071_CHARCOAL_SLf?$300x400_retinamobilex2$"
+            image="https://images-na.ssl-images-amazon.com/images/I/81O%2BGNdkzKL._AC_SX679_.jpg"
             rating={5}
           />
           <Product
@@ -53,7 +53,15 @@ function Home() {
           />
         </div>
 
-        <div className="home__row">{/* product */}</div>
+        <div className="home__row">
+          <Product
+            id="278349237498"
+            title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor - Super Ultra Wide Dual WQHD 5120 x 1440"
+            price={1094.98}
+            image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._AC_SX355_.jpg"
+            rating={4}
+          />
+        </div>
       </div>
     </div>
   );
