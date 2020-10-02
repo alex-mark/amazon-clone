@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Flipper, Flipped } from "react-flip-toolkit";
 import "./Checkout.css";
 import Subtotal from "./Subtotal";
 import BasketItem from "./BasketItem";
@@ -6,6 +7,9 @@ import { useStateValue } from "./StateProvider";
 
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
+  const [itemRemoved, setItemRemoved] = useState(false);
+
+  const toggleItemRemoved = () => setItemRemoved((prevState) => !prevState);
 
   return (
     <div className="checkout">
@@ -18,31 +22,20 @@ function Checkout() {
         <div>
           <h3>Hello, {user?.email}</h3>
           <h2 className="checkout__title">Your shopping Basket</h2>
-          {/* <BasketItem
-            index="1"
-            item={{
-              title:
-                "The Lean Startup: How Constant Innovation Creates Radically Successful businesses Paperback",
-              price: 11.96,
-              image:
-                "https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg",
-              rating: 5,
-            }}
-          />
-          <BasketItem
-            index="1"
-            item={{
-              title:
-                "The Lean Startup: How Constant Innovation Creates Radically Successful businesses Paperback",
-              price: 11.96,
-              image:
-                "https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg",
-              rating: 5,
-            }}
-          /> */}
-          {basket.map((item, index) => (
-            <BasketItem key={item.id} item={item} index={index} />
-          ))}
+
+          <Flipper flipKey={basket.length}>
+            {console.log(basket.length)}
+            {basket.map((item, index) => (
+              <Flipped key={item.id} flipId={item.id}>
+                <BasketItem
+                  key={item.id}
+                  item={item}
+                  index={index}
+                  // onRemove={toggleItemRemoved}
+                />
+              </Flipped>
+            ))}
+          </Flipper>
         </div>
       </div>
 

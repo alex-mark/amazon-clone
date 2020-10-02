@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import "./BasketItem.css";
 import { useStateValue } from "./StateProvider";
 
-const BasketItem = ({ item, index }) => {
+const BasketItem = ({ item, index, onRemove }) => {
   const [{ basket }, dispatch] = useStateValue();
 
   const { image, title, price, rating } = item;
@@ -17,7 +17,7 @@ const BasketItem = ({ item, index }) => {
   };
 
   return (
-    <div ref={ref} className="basketItem">
+    <div className="basketItem">
       <img src={image} alt={title} />
 
       <div className="basketItem__info">
@@ -29,8 +29,8 @@ const BasketItem = ({ item, index }) => {
         <div className="basketItem__rating">
           {Array(rating)
             .fill()
-            .map(() => (
-              <p>⭐️</p>
+            .map((_, i) => (
+              <p key={i}>⭐️</p>
             ))}
         </div>
         <button className="basketItem__button" onClick={removeFromBasket}>
