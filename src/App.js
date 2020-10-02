@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("the user is >>>", authUser);
+      // console.log("the user is >>>", authUser);
 
       if (auth) {
         // the user just logged in / the user was logged in

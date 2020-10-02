@@ -1,8 +1,8 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import "./BasketItem.css";
 import { useStateValue } from "./StateProvider";
 
-function BasketItem({ item, index }) {
+const BasketItem = ({ item, index }) => {
   const [{ basket }, dispatch] = useStateValue();
 
   const { image, title, price, rating } = item;
@@ -17,7 +17,7 @@ function BasketItem({ item, index }) {
   };
 
   return (
-    <div className="basketItem">
+    <div ref={ref} className="basketItem">
       <img src={image} alt={title} />
 
       <div className="basketItem__info">
@@ -39,6 +39,6 @@ function BasketItem({ item, index }) {
       </div>
     </div>
   );
-}
+};
 
 export default BasketItem;

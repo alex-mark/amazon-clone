@@ -41,7 +41,7 @@ function Checkout() {
             }}
           /> */}
           {basket.map((item, index) => (
-            <BasketItem key={index} item={item} index={index} />
+            <BasketItem key={item.id} item={item} index={index} />
           ))}
         </div>
       </div>
