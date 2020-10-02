@@ -1,5 +1,12 @@
 # Amazon clone
 
+- MERN Stack
+- Firebase Authentication
+- Firestore
+- Stripe payments
+
+## React stuff
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
