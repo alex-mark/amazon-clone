@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flipper, Flipped } from "react-flip-toolkit";
+import { useTransition, config, animated } from "react-spring";
 import "./Checkout.css";
 import Subtotal from "./Subtotal";
 import BasketItem from "./BasketItem";
@@ -7,9 +7,13 @@ import { useStateValue } from "./StateProvider";
 
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
-  const [itemRemoved, setItemRemoved] = useState(false);
 
-  const toggleItemRemoved = () => setItemRemoved((prevState) => !prevState);
+  const transitions = useTransition(basket, (item) => item.key, {
+    config: config.gentle,
+    from: { opacity: 0, transform: "translate3d(-25%, 0px, 0px)" },
+    enter: { opacity: 1, transform: "translate3d(0%, 0px, 0px)" },
+    leave: { opacity: 0, transform: "translate3d(25%, 0px, 0px)" },
+  });
 
   return (
     <div className="checkout">
@@ -23,19 +27,17 @@ function Checkout() {
           <h3>Hello, {user?.email}</h3>
           <h2 className="checkout__title">Your shopping Basket</h2>
 
-          <Flipper flipKey={basket.length}>
-            {console.log(basket.length)}
-            {basket.map((item, index) => (
-              <Flipped key={item.id} flipId={item.id}>
+          {basket &&
+            transitions.map(({ item, props, key }, index) => (
+              <animated.div key={key} style={props}>
                 <BasketItem
-                  key={item.id}
+                  key={key}
                   item={item}
                   index={index}
                   // onRemove={toggleItemRemoved}
                 />
-              </Flipped>
+              </animated.div>
             ))}
-          </Flipper>
         </div>
       </div>
 
