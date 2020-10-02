@@ -17,6 +17,28 @@ function Checkout() {
         />
         <div>
           <h2 className="checkout__title">Your shopping Basket</h2>
+          {/* <BasketItem
+            index="1"
+            item={{
+              title:
+                "The Lean Startup: How Constant Innovation Creates Radically Successful businesses Paperback",
+              price: 11.96,
+              image:
+                "https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg",
+              rating: 5,
+            }}
+          />
+          <BasketItem
+            index="1"
+            item={{
+              title:
+                "The Lean Startup: How Constant Innovation Creates Radically Successful businesses Paperback",
+              price: 11.96,
+              image:
+                "https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg",
+              rating: 5,
+            }}
+          /> */}
           {basket.map((item, index) => (
             <BasketItem key={index} item={item} index={index} />
           ))}

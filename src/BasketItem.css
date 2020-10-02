@@ -1,7 +1,7 @@
 .basketItem {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-top: 20px;
   width: 100%;
   max-height: 400px;
@@ -11,23 +11,22 @@
 }
 
 .basketItem > img {
-  /* max-width: 200px; */
-  width: 100%;
+  width: 180px;
+  height: 180px;
   flex: 1 1 auto;
   /* height: auto; */
   object-fit: contain;
-  margin-right: 15px;
 }
 
 .basketItem__info {
-  flex: 2 1 auto;
-  width: 100%;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
 }
 
 .basketItem__title {
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 17px;
 }
 
 .basketItem__rating {
