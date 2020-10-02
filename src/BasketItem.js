@@ -7,7 +7,7 @@ function BasketItem({ item, index }) {
 
   const { image, title, price, rating } = item;
 
-  console.log("this is the basket", basket);
+  // console.log("this is the basket", basket);
 
   const removeFromBasket = () => {
     dispatch({
@@ -29,7 +29,7 @@ function BasketItem({ item, index }) {
         <div className="basketItem__rating">
           {Array(rating)
             .fill()
-            .map((_, i) => (
+            .map(() => (
               <p>⭐️</p>
             ))}
         </div>
