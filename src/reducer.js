@@ -18,8 +18,7 @@ const reducer = (state, action) => {
             ...action.item,
             key:
               state.basket.reduce(
-                (prev, current) =>
-                  prev.key > current.key ? prev.key : current.key,
+                (max, item) => (item.key > max ? item.key : max),
                 0
               ) + 1,
           },
