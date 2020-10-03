@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import "./Payment.css";
 import { useStateValue } from "./StateProvider";
 import BasketItem from "./BasketItem";
 import { getBasketTotal } from "./reducer";
+import axios from "./axios";
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -14,16 +15,45 @@ function Payment() {
   const [disabled, setDisabled] = useState(true);
   const [processing, setProcessing] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
+  const [clientSecret, setClientSecret] = useState(true);
 
   const stripe = useStripe();
   const elements = useElements();
+
+  const history = useHistory();
+
+  useEffect(() => {
+    const getClientSecret = async () => {
+      const response = await axios.get({
+        method: "post",
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+      });
+      setClientSecret(response.data.clientSecret);
+    };
+
+    getClientSecret();
+  }, [basket]);
 
   const handleSubmit = async (event) => {
     // do all stripe stuff
     event.preventDefault();
     setProcessing(true);
 
-    const payload = await stripe();
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(({ paymentIntent }) => {
+        // paymentIntent = payment confirmation
+
+        setSucceeded(true);
+        setError(false);
+        setProcessing(false);
+
+        history.replaceState("/orders");
+      });
   };
 
   const handleChange = (event) => {
