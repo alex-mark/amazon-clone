@@ -24,8 +24,9 @@ function Payment() {
 
   useEffect(() => {
     const getClientSecret = async () => {
-      const response = await axios.get({
+      const response = await axios({
         method: "post",
+        // Stripe expects the total in a currency subunits
         url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
       });
       setClientSecret(response.data.clientSecret);
@@ -33,6 +34,8 @@ function Payment() {
 
     getClientSecret();
   }, [basket]);
+
+  console.log("the secret is >>>", clientSecret);
 
   const handleSubmit = async (event) => {
     // do all stripe stuff
@@ -52,7 +55,7 @@ function Payment() {
         setError(false);
         setProcessing(false);
 
-        history.replaceState("/orders");
+        history.replace("/orders");
       });
   };
 
