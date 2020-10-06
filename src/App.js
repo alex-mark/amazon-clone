@@ -8,6 +8,7 @@ import Home from "./Home";
 import Login from "./Login";
 import Checkout from "./Checkout";
 import Payment from "./Payment";
+import Orders from "./Orders";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
 
@@ -55,6 +56,10 @@ function App() {
             <Elements stripe={promise}>
               <Payment />
             </Elements>
+          </Route>
+          <Route to="/orders">
+            <Header />
+            <Orders />
           </Route>
           <Route path="/login">
             <Login />
