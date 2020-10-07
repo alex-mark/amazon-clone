@@ -5,6 +5,8 @@
 - Firestore
 - Stripe payments
 
+[Live App](https://clone-15b44.web.app/)
+
 ## React stuff
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
