@@ -57,12 +57,12 @@ function App() {
               <Payment />
             </Elements>
           </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route to="/orders">
             <Header />
             <Orders />
-          </Route>
-          <Route path="/login">
-            <Login />
           </Route>
         </Switch>
       </div>

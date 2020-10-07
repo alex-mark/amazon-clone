@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import "./BasketItem.css";
 import { useStateValue } from "./StateProvider";
 
-const BasketItem = ({ item, index, onRemove }) => {
+const BasketItem = ({ item, index, hideButton }) => {
   const [{ basket }, dispatch] = useStateValue();
 
   const { image, title, price, rating } = item;
@@ -33,9 +33,11 @@ const BasketItem = ({ item, index, onRemove }) => {
               <p key={i}>⭐️</p>
             ))}
         </div>
-        <button className="basketItem__button" onClick={removeFromBasket}>
-          Remove from Basket
-        </button>
+        {!hideButton && (
+          <button className="basketItem__button" onClick={removeFromBasket}>
+            Remove from Basket
+          </button>
+        )}
       </div>
     </div>
   );
