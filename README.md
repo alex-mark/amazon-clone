@@ -1,11 +1,11 @@
 # Amazon clone
 
+## [Live App](https://clone-15b44.web.app/)
+
 - MERN Stack
 - Firebase Authentication
 - Firestore
 - Stripe payments
-
-[Live App](https://clone-15b44.web.app/)
 
 ## React stuff
 
