@@ -1,6 +1,7 @@
 # Amazon clone
 
 ## [Live App](https://clone-15b44.web.app/)
+> For credit card info repeat "42" in every field
 
 - MERN Stack
 - Firebase Authentication
